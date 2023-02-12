@@ -15,5 +15,7 @@ class Order:
     
     
 if __name__ == "__main__": 
-    line = "123;Jhon Pony;Item1;3;item2;14;item3;123"
-    print(Order(line))
+    with open(argv[1]) as f:
+        orders = map(Order, f.readlines())
+    for order in orders:
+        print(order)
