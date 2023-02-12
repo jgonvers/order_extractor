@@ -40,3 +40,28 @@ open the file, map each line to an Order
         print(order)
 ```
 print each orders
+
+# fake_content.py
+```
+from faker import Faker
+```
+faker allow to easily create fake data like name or word
+```
+if __name__ == "__main__":
+    filename = "test_data.csv"
+    quantity = 1000
+    start_id = 123
+    fake = Faker()
+```
+initialize the faking by giving the filename created, the quantity of data created the id_start and initialize faker
+```
+    with open(filename, "w") as f:
+        for i in range(quantity):
+            values = [str(start_id+i)]
+            values.append(fake.name())
+            for x in range(fake.random_int(1,10)):
+                values.append(fake.word())
+                values.append(str(fake.random_int(1,1000)))
+            print(";".join(values), file=f)
+```
+create and print to file the datas, rand could have been used instead for Faker.rand_int but would have requirer one more import for the same result
